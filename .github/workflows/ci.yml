@@ -1,4 +1,4 @@
-name: CI
+name: CI Pipeline
 
 on:
   push:
@@ -13,7 +13,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Log In to dockerHub
-      run: docker login -u rakshitgarg99126 -p dckr_pat_b5BHWNIVjD9Rjgnttwxb49nBtnQ
+      env:
+        DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+        DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+      run: docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+
     - name: Build docker image
       run: docker build -t ci_cd_practice .
     - name: Tag image docker
