@@ -1,6 +1,6 @@
 
 
-## fast api code for  hello world
+## fast api code for hello world
 
 from fastapi import FastAPI
 app = FastAPI()
